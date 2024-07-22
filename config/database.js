@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-
-const db = mongoose.connection;
-
-const plantSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  image: String,
+mongoose.connect(process.env.DATABASE_URL)
+.then(() => {
+  console.log(`Connected to MongoDB to ${mongoose.connection.name}`);
 })
+.catch((err) => {
+  console.error('Error connecting to Mongo', err);
+});
 
-const Plant = mongoose.model('Plant', plantSchema)
-module.exports = Plant
+// const plantSchema = new mongoose.Schema({
+//   name: { type: String, required: true },
+//   description: { type: String, required: true },
+//   image: String,
+// })
 
-db.on("connected", () => {
-    console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
-    }
-)
+// const Plant = mongoose.model('Plant', plantSchema)
+// module.exports = Plant
+

@@ -1,5 +1,6 @@
 // We begin by loading Express
-const dotenv = require("dotenv").config(); // Loads the environment variables from .env file
+const dotenv = require("dotenv")
+dotenv.config(); // Loads the environment variables from .env file
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
