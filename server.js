@@ -10,6 +10,11 @@ const app = express();
 //Database
 require('./config/database')
 
+//Book Routes 
+const bookRoutes = require('./routes/books');
+app.use('/books', bookRoutes);
+
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));

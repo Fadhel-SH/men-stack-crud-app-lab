@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Men Stack Lab</title>
+    <title>Book Collection App</title>
 </head>
 <body>
-    <h1>Men Stack Lab</h1>
+    <h1>Welcome to the Book Collection App</h1>
+    <% include layout %>
+<h2>All Books</h2>
+<ul>
+  <% books.forEach(book => { %>
+    <li>
+      <a href="/books/<%= book._id %>"><%= book.title %> by <%= book.author %></a>
+      <form action="/books/<%= book._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
 </body>
 </html>
